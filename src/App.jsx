@@ -6,25 +6,30 @@ function App() {
   const [author, setAuthor] = useState('')
 
   useEffect(() => {
-    const fetchQuote = () => {
-      fetch('https://api.quotable.io/quotes/random')
-      .then(res => {
-        return res.json()
+    fetch('https://api.quotable.io/quotes/random')
+    .then(res => {
+      return res.json()
+    })
+    .then((items) => {
+      items.map((item) => {
+        setQuote(item.content)
+        setAuthor(item.author)
       })
-      .then((items) => {
-        items.map((item) => {
-          setQuote(item.content)
-          setAuthor(item.author)
-        })
-        // setQuote(data.contne)
-      })
-    }
-    fetchQuote()
+    })
   }, [])
+  
 
   const handleClick = () => {
-    console.log(quote)
-    console.log(author)
+    fetch('https://api.quotable.io/quotes/random')
+    .then(res => {
+      return res.json()
+    })
+    .then((items) => {
+      items.map((item) => {
+        setQuote(item.content)
+        setAuthor(item.author)
+      })
+    })
   }
 
   return (
@@ -33,7 +38,7 @@ function App() {
         <div id="quote-box">
           <p id="text">{quote}</p>
           <p id="author">{author}</p>
-          <button id="new-quote" onClick={handleClick}></button>
+          <button id="new-quote" onClick={handleClick}>New Quote</button>
         </div>
       </div>
     </>
