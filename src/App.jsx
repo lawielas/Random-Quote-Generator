@@ -33,15 +33,18 @@ function App() {
   }
 
   return (
-    <>
-      <div id="wrapper">
-        <div id="quote-box">
-          <p id="text">{quote}</p>
-          <p id="author">{author}</p>
-          <button id="new-quote" onClick={handleClick}>New Quote</button>
+      <div id="wrapper" className='flex justify-center items-center'>
+        <div id="quote-box" className='p-10 font-montserrat bg-slate-200 w-4/5'>
+          <div className='my-7'>
+            <p id="text" className='text-xl'>{quote}</p>
+            <p id="author" className='font-roboto float-right mx-8 text-lg italic'>- {author}</p>
+          </div>
+          <div className='flex justify-around mt-10 px-14'>
+            <a href="twitter.com/intent/tweet" id='tweet-quote' target="_blank"><i className="fa fa-twitter text-4xl"></i></a>
+            <button id="new-quote" onClick={handleClick} className='bg-emerald-300 p-2 rounded-lg font-medium hover:bg-emerald-400 transition-all ease-in duration-200'>New Quote</button>
+          </div>
         </div>
       </div>
-    </>
   )
 }
 
